@@ -47,6 +47,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Six Sport Life custom colors
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          muted: "hsl(var(--gold-muted))",
+          glow: "hsl(var(--gold-glow))",
+        },
+        dark: {
+          DEFAULT: "hsl(var(--dark))",
+          card: "hsl(var(--dark-card))",
+          surface: "hsl(var(--dark-surface))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
