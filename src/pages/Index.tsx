@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Wifi, ArrowRight } from "lucide-react";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-gradient-dark flex items-center justify-center p-6">
+  return <div className="min-h-screen bg-gradient-dark flex items-center justify-center p-6">
       <div className="text-center max-w-2xl mx-auto">
         {/* Logo */}
         <div className="mb-8">
@@ -19,9 +17,7 @@ const Index = () => {
 
         {/* Welcome Message */}
         <div className="mb-12">
-          <h2 className="text-3xl font-light text-foreground mb-4">
-            Portal Captivo para pfSense
-          </h2>
+          <h2 className="text-3xl font-light text-foreground mb-4">Portal de Acesso a Internet</h2>
           <p className="text-xl text-muted-foreground leading-relaxed">
             Onde a <span className="text-gold font-semibold">exclusividade</span> encontra a{" "}
             <span className="text-gold font-semibold">alta performance</span>
@@ -43,8 +39,6 @@ const Index = () => {
           </p>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
