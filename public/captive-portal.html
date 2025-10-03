@@ -145,16 +145,6 @@
             font-size: 0.8rem;
             color: #888888;
         }
-        
-        .logout-info {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .logout-info h2 {
-            color: #d4af37;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
@@ -165,54 +155,33 @@
             <div class="subtitle">SPORT LIFE</div>
         </div>
         
-        <div id="login-page">
-            <div class="wifi-info">
-                <p>Conecte-se à rede</p>
-                <p class="network-name">Six Sport Life WiFi</p>
-            </div>
-            
-            <div id="error-container" style="display: none;">
-                <div class="error-message">
-                    <strong>Erro de Autenticação</strong><br>
-                    Usuário ou senha incorretos. Tente novamente.
-                    <span id="portal-messages">$PORTAL_MESSAGE$</span>
-                </div>
-            </div>
-            
-            <form method="post" action="$PORTAL_ACTION$">
-                <div class="form-group">
-                    <label for="auth_user">Usuário:</label>
-                    <input type="text" name="auth_user" id="auth_user" placeholder="Digite seu usuário" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="auth_pass">Senha:</label>
-                    <input type="password" name="auth_pass" id="auth_pass" placeholder="Digite sua senha" required>
-                </div>
-                
-                <div class="form-group" style="display: none;">
-                    <label for="auth_voucher">Voucher (opcional):</label>
-                    <input type="text" name="auth_voucher" id="auth_voucher" placeholder="Digite o voucher se disponível">
-                </div>
-                
-                <input type="hidden" name="redirurl" value="$PORTAL_REDIRURL$">
-                <input type="hidden" name="zone" value="$PORTAL_ZONE$">
-                
-                <button type="submit" name="accept" value="Continue" class="submit-btn">
-                    Conectar à Internet
-                </button>
-            </form>
+        <div class="wifi-info">
+            <p>Conecte-se à rede</p>
+            <p class="network-name">Six Sport Life WiFi</p>
         </div>
         
-        <div id="logout-page" style="display: none;">
-            <div class="logout-info">
-                <h2>Logout Realizado</h2>
-                <div class="success-message">
-                    Você foi desconectado com sucesso da rede Six Sport Life WiFi.
-                </div>
-                <p>Obrigado por utilizar nossos serviços!</p>
+        <form method="post" action="$PORTAL_ACTION$">
+            <div class="form-group">
+                <label for="auth_user">Usuário:</label>
+                <input type="text" name="auth_user" id="auth_user" placeholder="Digite seu usuário" required>
             </div>
-        </div>
+            
+            <div class="form-group">
+                <label for="auth_pass">Senha:</label>
+                <input type="password" name="auth_pass" id="auth_pass" placeholder="Digite sua senha" required>
+            </div>
+            
+            <div class="form-group" style="display: none;">
+                <input type="text" name="auth_voucher" id="auth_voucher">
+            </div>
+            
+            <input type="hidden" name="redirurl" value="$PORTAL_REDIRURL$">
+            <input type="hidden" name="zone" value="$PORTAL_ZONE$">
+            
+            <button type="submit" name="accept" value="Continue" class="submit-btn">
+                Conectar à Internet
+            </button>
+        </form>
         
         <div class="footer">
             <p>© 2025 Six Sport Life</p>
@@ -221,18 +190,6 @@
     </div>
     
     <script>
-        // Detectar tipo de página baseado em parâmetros URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const pageType = urlParams.get('type');
-        
-        if (pageType === 'error') {
-            document.getElementById('error-container').style.display = 'block';
-        } else if (pageType === 'logout') {
-            document.getElementById('login-page').style.display = 'none';
-            document.getElementById('logout-page').style.display = 'block';
-        }
-        
-        // Adicionar efeito de carregamento no submit
         document.querySelector('form').addEventListener('submit', function() {
             const btn = document.querySelector('.submit-btn');
             btn.textContent = 'Conectando...';

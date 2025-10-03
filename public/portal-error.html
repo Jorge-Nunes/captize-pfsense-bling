@@ -91,8 +91,40 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-group input::placeholder {
+            color: #888888;
         }
         
         .retry-btn:hover {
@@ -119,19 +151,46 @@
             <h2>⚠️ Erro de Autenticação</h2>
             <p>As credenciais fornecidas não são válidas.</p>
             <p>Verifique seu usuário e senha e tente novamente.</p>
-            <div class="portal-message">
+            <div class="portal-message" style="margin-top: 15px; font-style: italic;">
                 $PORTAL_MESSAGE$
             </div>
         </div>
         
-        <a href="javascript:history.back()" class="retry-btn">
-            Tentar Novamente
-        </a>
+        <form method="post" action="$PORTAL_ACTION$">
+            <div class="form-group">
+                <label for="auth_user">Usuário:</label>
+                <input type="text" name="auth_user" id="auth_user" placeholder="Digite seu usuário" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="auth_pass">Senha:</label>
+                <input type="password" name="auth_pass" id="auth_pass" placeholder="Digite sua senha" required>
+            </div>
+            
+            <div class="form-group" style="display: none;">
+                <input type="text" name="auth_voucher" id="auth_voucher">
+            </div>
+            
+            <input type="hidden" name="redirurl" value="$PORTAL_REDIRURL$">
+            <input type="hidden" name="zone" value="$PORTAL_ZONE$">
+            
+            <button type="submit" name="accept" value="Continue" class="retry-btn">
+                Tentar Novamente
+            </button>
+        </form>
         
         <div class="footer">
             <p>© 2025 Six Sport Life</p>
             <p>Em caso de dúvidas, procure a recepção</p>
         </div>
     </div>
+    
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            const btn = document.querySelector('.retry-btn');
+            btn.textContent = 'Conectando...';
+            btn.style.opacity = '0.7';
+        });
+    </script>
 </body>
 </html>
